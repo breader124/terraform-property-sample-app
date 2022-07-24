@@ -1,3 +1,7 @@
 micronaut:
   application:
     name: terraformPropertySampleApp
+
+demo:
+  queue:
+    url: ${DEMO_QUEUE_URL}
