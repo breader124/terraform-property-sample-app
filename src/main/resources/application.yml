@@ -1,4 +1,6 @@
 micronaut:
+  server:
+    port: 80
   application:
     name: terraformPropertySampleApp
 
