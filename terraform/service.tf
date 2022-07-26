@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "sample_app_task_definition" {
   container_definitions    = jsonencode([
     {
       name         = "sample-app"
-      image        = "296142348249.dkr.ecr.eu-central-1.amazonaws.com/terraform-property-sample-app:latest"
+      image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/terraform-property-sample-app:latest"
       cpu          = 128
       memory       = 512
       portMappings = [
@@ -30,6 +30,12 @@ resource "aws_ecs_task_definition" "sample_app_task_definition" {
           containerPort = 80
           hostPort      = 80
           protocol      = "tcp"
+        }
+      ]
+      secrets = [
+        {
+          name = "DEMO_QUEUE_URL"
+          valueFrom = aws_ssm_parameter.sample_sqs_queue_url.arn
         }
       ]
     }

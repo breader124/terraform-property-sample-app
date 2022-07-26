@@ -11,3 +11,7 @@ provider "aws" {
   region  = "eu-central-1"
   profile = "dev-sandbox"
 }
+
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}

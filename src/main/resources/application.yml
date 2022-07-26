@@ -7,3 +7,8 @@ micronaut:
 demo:
   queue:
     url: ${DEMO_QUEUE_URL}
+
+endpoints:
+  all:
+    enabled: true
+    sensitive: false
